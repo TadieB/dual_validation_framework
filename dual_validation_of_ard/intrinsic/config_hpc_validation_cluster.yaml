@@ -1,0 +1,16 @@
+# SLURM job parameters for each Dask worker job
+cores: 16
+memory: "48GB"
+processes: 2
+queue: "batch"
+account: "cli900"
+walltime: "01:00:00" # Increased walltime for potentially longer analysis
+interface: null
+
+# Directives passed to SLURM's sbatch command for each worker job
+job_extra_directives:
+  - "--nodes=1"
+  - "--ntasks-per-node=2"
+
+# Number of SLURM jobs to submit. Total workers = slurm_jobs * processes
+slurm_jobs: 2

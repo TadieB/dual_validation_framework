@@ -1,0 +1,39 @@
+# config_intrinsic.yaml (Final Version)
+# ----------------------------------
+# --- Input/Output Paths ---
+zarr_store_path: "/lustre/orion/world-shared/cli900/users/tadie/zarr_netcdf_pipeline/final_datacubes2/MOD09GA_CentralEurope_ROI.zarr"
+land_cover_path: "/lustre/orion/world-shared/cli900/users/tadie/intrinsic_hpc/worldcover_europe/*.tif"
+output_dir: "./intrinsic_validation_results_geo_px/" # updated to save both pixel coord , and geo coords
+
+# --- Analysis Parameters ---
+patch_size: 224
+
+# --- Land Cover Class Definitions ---
+# Maps class IDs to their names and official ESA WorldCover colors
+land_cover_map:
+  10: { name: "Tree cover", color: "#006400" }
+  20: { name: "Shrubland", color: "#ffbb22" }
+  30: { name: "Grassland", color: "#ffff4c" }
+  40: { name: "Cropland", color: "#f096ff" }
+  50: { name: "Built-up", color: "#fa0000" }
+  60: { name: "Bare / sparse vegetation", color: "#b4b4b4" }
+  70: { name: "Snow and ice", color: "#f0f0f0" }
+  80: { name: "Permanent water bodies", color: "#0064c8" }
+  90: { name: "Herbaceous wetland", color: "#0096a0" }
+  95: { name: "Mangroves", color: "#00cf75" }
+  100: { name: "Moss and lichen", color: "#fae6a0" }
+
+# Define which classes to use by referencing the keys from the map above
+sampling:
+  num_samples_per_class: 50
+  land_cover_classes: [10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+
+stable_target_classes:
+  - 50
+  - 60
+  - 80
+
+# --- Band Names for Radiometric Checks ---
+band_names:
+  red: "B01"
+  nir: "B02"

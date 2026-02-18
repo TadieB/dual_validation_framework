@@ -1,0 +1,54 @@
+# config_datacube.yaml
+# ----------------------------------
+# Configuration for the multitemporal data cube pipeline.
+
+# --- Input/Output Paths ---
+input_dir: "/lustre/orion/world-shared/cli900/users/tadie/2024"
+output_dir: "/lustre/orion/world-shared/cli900/users/tadie/zarr_netcdf_benchmark/data_n_results_final2/"
+
+# --- Output Filenames ---
+netcdf_filename: "MOD09GA_CentralEurope_ROI.nc"
+zarr_store_name: "MOD09GA_CentralEurope_ROI.zarr"
+
+
+# --- Benchmarking Parameters ---
+patch_size: 224             # (ex.prithvi eo-2)
+num_batches_to_test: 1      # just for test...
+batch_size: 4             # (ex.prithvi eo-2, 8 for landslide detection finetuning)
+timesteps_for_benchmark: 4  # (ex.prithvi eo-2)
+
+# --- Data Processing Parameters ---
+reflectance_fill_value: -28672
+band_quality_fill_value: 787410671
+cloud_state_fill_value: 65535
+valid_range: [-100, 16000]
+scale_factor: 0.0001
+upsampling_factor: 2
+min_valid_fraction: 0.5
+required_bands: [1, 2, 3, 4, 5, 6, 7]
+critical_bands: [1, 2, 3, 4, 5, 6, 7]
+
+tiles_per_day: 4
+expected_days: 20
+
+# --- Optimal Chunking for Output Files ---
+zarr_chunks:
+  time: -1
+  band: -1
+  y: 1024
+  x: 1024
+
+# === Dask SLURMCluster Configuration ===
+# This defines the resources for each worker job requested from SLURM.
+dask_cluster:
+  cores: 16
+  memory: "48GB"
+  processes: 2
+  queue: "batch"
+  account: "cli900"
+  walltime: "02:00:00"
+  interface: null
+  slurm_jobs: 2
+  job_extra_directives:
+    - "--nodes=1"
+    - "--ntasks-per-node=2"

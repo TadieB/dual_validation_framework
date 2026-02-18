@@ -1,0 +1,48 @@
+# config_datacube.yaml
+# ----------------------------------
+# Configuration for the multitemporal data cube pipeline.
+
+# --- Input/Output Paths ---
+input_dir: "/lustre/orion/world-shared/cli900/users/tadie/2024"
+output_dir: "/lustre/orion/world-shared/cli900/users/tadie/0pipeline_final/data/"
+
+# --- Output Filenames ---
+netcdf_filename: "MOD09GA_CentralEurope_ROI.nc"
+zarr_store_name: "MOD09GA_CentralEurope_ROI.zarr"
+
+# --- Data Processing Parameters ---
+reflectance_fill_value: -28672
+band_quality_fill_value: 787410671
+cloud_state_fill_value: 65535
+valid_range: [-100, 16000]
+scale_factor: 0.0001
+upsampling_factor: 2
+min_valid_fraction: 0.5
+required_bands: [1, 2, 3, 4, 5, 6, 7]
+critical_bands: [1, 2, 3, 4, 5, 6, 7]
+
+tiles_per_day: 4
+expected_days: 5 # previous setup: 5, 10, 15, 20 days. Now, 1) do we remove this line, as we set time: 5 ???????
+
+# Chunking 
+zarr_chunks:
+  time: 5
+  band: -1
+  y: 1024
+  x: 1024
+
+# === Dask SLURMCluster Configuration ===
+# This defines the resources for each worker job requested from SLURM.
+dask_cluster:
+  cores: 8 # 16, 32, 64, 128 next
+  memory: "240GB"
+  processes: 1
+  queue: "batch"
+  account: "cli900"
+  walltime: "02:00:00"
+  interface: null
+  slurm_jobs: 1     # 2) next steps:  1(16cores), 1(32 cores), 2(64 cores),4(128 cores) jobs or nodes , right??
+  job_extra_directives:
+    - "--nodes=1"   # 3) number of jobs equal to number of nodes here?
+    - "--ntasks-per-node=1" # 4) number of processes equal to number of taskes and equal to number of workers?
+
