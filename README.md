@@ -29,17 +29,20 @@ Architectures and data ingestion pipelines.
 * `prithvi_cloud_imputation_model_bcast.py`: Decoder adaptations for the cloud-gap imputation task.
 * `cloud_imputation_dataloader_original.py`: Custom PyTorch dataloader featuring Just-In-Time (JIT) quality filtering and NaN sanitization.
 
-### 4. `hpc_deployment/`
-SLURM scripts and DDP wrappers used to execute runs across computing environments.
-* `ddp_ieee_lustre_preloading_fix_batch.py`: The PyTorch Distributed Data Parallel (DDP) wrapper script that handles pre-loading data into accelerator memory to prevent I/O bottlenecks during benchmarking.
-* `submit_all_scales.sh`: Master execution script that automatically submits sequential jobs for 8, 16, 32, 64, and 128 GPUs.
-* `run_single_scale_lustre_preload.sh`: The worker SLURM script configured for AMD MI250X GPUs on OLCF Frontier.
+## 🚀 Installation & Environments
 
-## 🚀 Running the Scalability Benchmarks (OLCF Frontier)
+Due to the diverse hardware used in this framework (AMD MI250X, NVIDIA GPUs, and CPUs), we provide distinct requirement files in the `requirements/` directory.
 
-To reproduce the strong scaling results showing 3D U-Net's high parallel efficiency (88.1%) vs. Prithvi ViT's communication bottlenecks (15.6%):
+**1. Data Pipeline (CPU)**
+```bash
+conda create -n pipeline_env python=3.11
+conda activate pipeline_env
+pip install -r requirements/andes_pipeline.txt
 
-1. **Submit the Jobs:**
-   ```bash
-   cd hpc_deployment
-   bash submit_all_scales.sh
+conda create -n train_env python=3.11
+conda activate train_env
+pip install torch==2.4.0 torchvision==0.19.0 --index-url [https://download.pytorch.org/whl/cu118](https://download.pytorch.org/whl/cu118)
+pip install -r requirements/baldo_training.txt
+
+# Refer to the official OLCF Frontier documentation for loading the base ROCm module.
+pip install -r requirements/frontier_scaling.txt
