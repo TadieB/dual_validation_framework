@@ -29,20 +29,27 @@ Architectures and data ingestion pipelines.
 * `prithvi_cloud_imputation_model_bcast.py`: Decoder adaptations for the cloud-gap imputation task.
 * `cloud_imputation_dataloader_original.py`: Custom PyTorch dataloader featuring Just-In-Time (JIT) quality filtering and NaN sanitization.
 
-## 🚀 Installation & Environments
+### 🚀 Installation & Environments
 
-Due to the diverse hardware used in this framework (AMD MI250X, NVIDIA GPUs, and CPUs), we provide distinct requirement files in the `requirements/` directory.
+Due to the diverse hardware used in this framework, we provide distinct environment configurations.
 
 **1. Data Pipeline (CPU)**
 ```bash
-conda create -n pipeline_env python=3.11
+conda create -n pipeline_env python=3.11 -y
 conda activate pipeline_env
 pip install -r requirements/andes_pipeline.txt
+```
 
-conda create -n train_env python=3.11
+**2. Production Training (NVIDIA GPU)**
+```bash
+conda create -n train_env python=3.11 -y
 conda activate train_env
 pip install torch==2.4.0 torchvision==0.19.0 --index-url [https://download.pytorch.org/whl/cu118](https://download.pytorch.org/whl/cu118)
 pip install -r requirements/baldo_training.txt
+```
 
-# Refer to the official OLCF Frontier documentation for loading the base ROCm module.
+**3. Extreme-Scale Benchmarking (AMD ROCm)**
+```bash
+# Ensure the base ROCm module is loaded per OLCF Frontier documentation
 pip install -r requirements/frontier_scaling.txt
+```
