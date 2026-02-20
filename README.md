@@ -3,7 +3,7 @@
 This repository contains the source code, models, and high-performance computing (HPC) deployment scripts for the paper: **"A Dual Validation Framework for Analysis-Ready Satellite Data: A Scalable Pipeline and Stratified Performance Analysis."**
 
 ## 📌 Overview
-This framework provides an end-to-end pipeline to acquire, validate, and train on petabyte-scale Earth Observation datasets. It introduces a **Difficulty Index (DI)** for stratified model evaluation and rigorously benchmarks the scalability of 3D U-Net and Prithvi Vision Transformer architectures on extreme-scale supercomputers (OLCF Frontier).
+This framework provides an end-to-end pipeline to acquire, validate, and train on large-scale Earth Observation datasets. It introduces a **Difficulty Index (DI)** for stratified model evaluation and rigorously benchmarks the scalability of 3D U-Net and Prithvi Vision Transformer architectures on extreme-scale supercomputers (OLCF Frontier).
 
 ---
 
