@@ -1,8 +1,5 @@
 # A Dual Validation Framework for Analysis-Ready Satellite Data
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Paper](https://img.shields.io/badge/Paper-IEEE_JSTARS-blue.svg)](#citation)
-
 This repository contains the source code, models, and high-performance computing (HPC) deployment scripts for the paper: **"A Dual Validation Framework for Analysis-Ready Satellite Data: A Scalable Pipeline and Stratified Performance Analysis."**
 
 ## 📌 Overview
@@ -20,10 +17,10 @@ Handles the parallel acquisition and construction of the multitemporal data cube
 ### 2. `dual_validation/`
 The core scientific framework quantifying data quality and model utility.
 * **`intrinsic/`**: 
-  * `[YOUR_DI_SCRIPT.py]`: Calculates the composite Difficulty Index (spatial heterogeneity, temporal variability, and scarcity).
-  * `[YOUR_RADIOMETRIC_SCRIPT.py]`: Radiometric sanity and temporal consistency checks.
+  *  Calculates the composite Difficulty Index (spatial heterogeneity, temporal variability, and scarcity).
+  *  Radiometric sanity and temporal consistency checks.
 * **`extrinsic/`**: 
-  * `[YOUR_STRATIFIED_SCRIPT.py]`: Evaluates downstream model performance across different DI strata.
+  * Evaluates downstream model performance across different DI strata.
 
 ### 3. `models/`
 Architectures and data ingestion pipelines.
@@ -37,12 +34,6 @@ SLURM scripts and DDP wrappers used to execute runs across computing environment
 * `ddp_ieee_lustre_preloading_fix_batch.py`: The PyTorch Distributed Data Parallel (DDP) wrapper script that handles pre-loading data into accelerator memory to prevent I/O bottlenecks during benchmarking.
 * `submit_all_scales.sh`: Master execution script that automatically submits sequential jobs for 8, 16, 32, 64, and 128 GPUs.
 * `run_single_scale_lustre_preload.sh`: The worker SLURM script configured for AMD MI250X GPUs on OLCF Frontier.
-
-### 5. `analysis_and_plotting/`
-* `ai_scaling.py`: Script to generate standard and Canonical Speedup representation plots.
-* `ieee_results.csv`: The raw scalability benchmark results used in the paper.
-
----
 
 ## 🚀 Running the Scalability Benchmarks (OLCF Frontier)
 
