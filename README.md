@@ -11,8 +11,8 @@ This framework provides an end-to-end pipeline to acquire, validate, and train o
 
 ### 1. `data_generation_pipeline/`
 Handles the parallel acquisition and construction of the multitemporal data cube.
-* `[YOUR_DOWNLOAD_SCRIPT.py]`: Parallel LPDAAC data acquisition using Parsl and Globus.
-* `[YOUR_ZARR_SCRIPT.py]`: Preprocessing and chunking of the dataset into a `.zarr` cube.
+* `[data_acquisition.py]`: Parallel LPDAAC data acquisition using Parsl and Globus.
+* `[main_benchmark_final2.py]`: Preprocessing and chunking of the dataset into a `.zarr` cube.
 
 ### 2. `dual_validation/`
 The core scientific framework quantifying data quality and model utility.
