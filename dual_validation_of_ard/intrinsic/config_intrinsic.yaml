@@ -1,8 +1,8 @@
 # config_intrinsic.yaml (Final Version)
 # ----------------------------------
 # --- Input/Output Paths ---
-zarr_store_path: "/lustre/orion/world-shared/cli900/users/tadie/zarr_netcdf_pipeline/final_datacubes2/MOD09GA_CentralEurope_ROI.zarr"
-land_cover_path: "/lustre/orion/world-shared/cli900/users/tadie/intrinsic_hpc/worldcover_europe/*.tif"
+zarr_store_path: "MOD09GA_CentralEurope_ROI.zarr"
+land_cover_path: "worldcover_europe/*.tif"
 output_dir: "./intrinsic_validation_results_geo_px/" # updated to save both pixel coord , and geo coords
 
 # --- Analysis Parameters ---
