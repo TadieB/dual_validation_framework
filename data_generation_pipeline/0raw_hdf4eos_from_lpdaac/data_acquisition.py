@@ -30,7 +30,7 @@ def get_args(verbose=True):
     p = argparse.ArgumentParser()
     # Base directory to save downloaded files
     p.add_argument('-b', '--SAVEBASEDIR', dest='SAVEBASEDIR', type=str, 
-                   default='/lustre/orion/world-shared/cli900/users/tadie/MODIS',
+                   default='',
                    help='Remote directory to save downloaded files')
     # Year to download
     p.add_argument('-y', '--year', dest='year', type=str, default="2024",
@@ -47,7 +47,7 @@ def get_args(verbose=True):
                    help='Source directory to download datasets')
     # Config file path
     p.add_argument('-c', '--config_filepath', type=str,
-                   default='/lustre/orion/world-shared/cli900/users/tadie/configs/tad.yml',
+                   default='token.yml',
                    help='Path to config YAML file')
     FLAGS = p.parse_args()
     if verbose:
