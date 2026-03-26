@@ -3,7 +3,7 @@
 #SBATCH --output=logs/intrinsic_validation_geo_px%j.out
 #SBATCH --error=logs/intrinsic_validation_geo_px%j.err
 #SBATCH --partition=batch
-#SBATCH --account=cli900
+#SBATCH --account=projectid
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=01:30:00
@@ -11,10 +11,10 @@
 # --- Environment Setup ---
 mkdir -p ./logs
 module load miniforge3/23.11.0
-source activate /lustre/orion/world-shared/cli900/users/tadie/myconda
+source activate myconda
 
 # Set environment paths
-export CONDA_PREFIX=/lustre/orion/world-shared/cli900/users/tadie/myconda
+export CONDA_PREFIX=myconda
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:$LD_LIBRARY_PATH"
 export PATH="$CONDA_PREFIX/bin:$PATH"
 CONDA_PYTHON="$CONDA_PREFIX/bin/python"
