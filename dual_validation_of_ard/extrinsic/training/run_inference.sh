@@ -16,17 +16,17 @@ echo "Job ID: $SLURM_JOB_ID"
 echo "=========================================="
 
 # --- Environment Setup ---
-source /home/tadiebirihan.medimem/anaconda3/etc/profile.d/conda.sh
-conda activate prithvi_py311
+source /home/username/anaconda3/etc/profile.d/conda.sh
+conda activate condaenv
 module purge
 module load CUDA/11.8.0
 
 # --- Configuration ---
-WORK_DIR="/home/tadiebirihan.medimem/prithvi_work/cloud_imputation"
+WORK_DIR="cloud_imputation"
 TRAINING_RUN_1_DIR="$WORK_DIR/experiments_20251009_074242"
 RESUME_RUN_DIR="$WORK_DIR/experiments_20251010_092758"
-ZARR_PATH="/home/tadiebirihan.medimem/prithvi_work/mydata/MOD09GA_CentralEurope_ROI.zarr"
-PRITHVI_WEIGHTS="/home/tadiebirihan.medimem/prithvi_work/Prithvi-EO-2.0-300M/Prithvi_EO_V2_300M.pt"
+ZARR_PATH="MOD09GA_CentralEurope_ROI.zarr"
+PRITHVI_WEIGHTS="Prithvi_EO_V2_300M.pt"
 
 cd "$WORK_DIR"
 
