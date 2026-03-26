@@ -3,8 +3,8 @@
 # Configuration for the multitemporal data cube pipeline.
 
 # --- Input/Output Paths ---
-input_dir: "/lustre/orion/world-shared/cli900/users/tadie/2024"
-output_dir: "/lustre/orion/world-shared/cli900/users/tadie/zarr_netcdf_benchmark/data_n_results_final2/"
+input_dir: ""
+output_dir: ""
 
 # --- Output Filenames ---
 netcdf_filename: "MOD09GA_CentralEurope_ROI.nc"
