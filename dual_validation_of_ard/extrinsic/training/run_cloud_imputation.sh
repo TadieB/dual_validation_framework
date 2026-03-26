@@ -19,7 +19,7 @@ echo "=========================================="
 
 # Environment setup
 source ~/.bashrc
-conda activate prithvi_py311
+conda activate condaenv
 echo "Conda environment activated"
 
 # Check GPU
