@@ -3,26 +3,24 @@
 #SBATCH --output=logs_final2/benchmark%j.out
 #SBATCH --error=logs_final2/benchmark%j.err
 #SBATCH --partition=batch
-#SBATCH --account=cli900
+#SBATCH --account=project_id
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=02:00:00
 
-# disable HDF5 file locking for this job (must happen before Python imports)
+# disable HDF5 file locking for this job 
 export HDF5_USE_FILE_LOCKING=FALSE
 
 # --- Environment Setup ---
 mkdir -p ./logs_final2
 module load miniforge3/23.11.0
-source activate /lustre/orion/world-shared/cli900/users/tadie/myconda
+source activate myconda
 
-# CRITICAL: Set environment paths based on your proven script
-export CONDA_PREFIX=/lustre/orion/world-shared/cli900/users/tadie/myconda
+#
+export CONDA_PREFIX=myconda
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:$LD_LIBRARY_PATH"
 export PATH="$CONDA_PREFIX/bin:$PATH"
 CONDA_PYTHON="$CONDA_PREFIX/bin/python"
-
-# --- Stability Settings from Your Production Script ---
 
 # Prevent segmentation faults from scientific libraries
 export OPENBLAS_NUM_THREADS=1
