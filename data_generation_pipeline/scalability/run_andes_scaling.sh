@@ -3,7 +3,7 @@
 #SBATCH --output=logs_scaling/benchmark_weak-%j.out
 #SBATCH --error=logs_scaling/benchmark_weak-%j.err
 #SBATCH --partition=batch
-#SBATCH --account=cli900
+#SBATCH --account=project_id
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=04:00:00
@@ -18,10 +18,10 @@ export HDF5_USE_FILE_LOCKING=FALSE
 # Load Modules & Activate Environment
 mkdir -p ./logs_scaling
 module load miniforge3/23.11.0
-source activate /lustre/orion/world-shared/cli900/users/tadie/myconda
+source activate myconda
 
 # CRITICAL: Export exact paths
-export CONDA_PREFIX=/lustre/orion/world-shared/cli900/users/tadie/myconda
+export CONDA_PREFIX=myconda
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:$LD_LIBRARY_PATH"
 export PATH="$CONDA_PREFIX/bin:$PATH"
 CONDA_PYTHON="$CONDA_PREFIX/bin/python"
