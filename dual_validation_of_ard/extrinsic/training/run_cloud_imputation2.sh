@@ -26,7 +26,7 @@ echo "=========================================="
 
 # Environment setup
 source ~/.bashrc
-conda activate prithvi_py311
+conda activate condaenv
 echo "Conda environment activated"
 
 # Check GPU
@@ -34,10 +34,10 @@ nvidia-smi
 python -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA: {torch.cuda.is_available()}')"
 
 # --- Paths configuration ---
-WORK_DIR="/home/tadiebirihan.medimem/prithvi_work/cloud_imputation"
+WORK_DIR="cloud_imputation"
 # IMPORTANT: UPDATE these two paths
-ZARR_PATH="/home/tadiebirihan.medimem/prithvi_work/mydata/MOD09GA_CentralEurope_ROI.zarr"
-PRITHVI_WEIGHTS="/home/tadiebirihan.medimem/prithvi_work/Prithvi-EO-2.0-300M/Prithvi_EO_V2_300M.pt"
+ZARR_PATH="MOD09GA_CentralEurope_ROI.zarr"
+PRITHVI_WEIGHTS="Prithvi-EO-2.0-300M/Prithvi_EO_V2_300M.pt"
 OUTPUT_DIR="$WORK_DIR/experiments_$(date +%Y%m%d_%H%M%S)"
 
 cd "$WORK_DIR"
