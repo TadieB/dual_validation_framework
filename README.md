@@ -25,7 +25,7 @@ The core scientific framework quantifying data quality and model utility.
     * Distributed GPU training scripts (`run_training_gpu_ddp.sh`)
     * Inference and stratified evaluation pipelines (`evaluate_stratified_inference.py`)
     * Visualization utilities (`panel_of_visualization.py`)
-    * Publication-ready table generation (`tables_paper_ready2.py`)
+    * Generate tables (`tables_paper_ready2.py`)
     * Baseline and foundation-model implementations:
       * `baseline_3d_unet_gn.py`
       * `prithvi_mae.py`
