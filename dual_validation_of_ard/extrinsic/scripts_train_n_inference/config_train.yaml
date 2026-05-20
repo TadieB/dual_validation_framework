@@ -1,0 +1,20 @@
+# --- Paths (Baldo HPC) ---
+zarr_path: "/MOD09GA_165_184_2021.zarr"
+difficulty_csv_path: "/dataset_difficulty_metrics_2021.csv"
+output_dir: "/experiments_unified"
+prithvi_weights: "/Prithvi_EO_V2_300M.pt"
+
+# --- Hardware & Data ---
+batch_size: 4
+num_workers: 4
+random_seed: 42
+
+# --- Training Hyperparameters ---
+learning_rate: 0.0001
+weight_decay: 0.05
+clip_grad_norm: 1.0
+baseline_epochs: 50 # 50
+prithvi_epochs: 50 # 50
+
+# --- Evaluation Settings ---
+num_vis: 20
