@@ -19,15 +19,21 @@ The core scientific framework quantifying data quality and model utility.
 * **`intrinsic/`**: 
   *  Calculates the composite Difficulty Index (spatial heterogeneity, temporal variability, and scarcity).
   *  Radiometric sanity and temporal consistency checks.
-* **`extrinsic/`**: 
-  * Evaluates downstream model performance across different DI strata.
-
-### 3. `models/`
-Architectures and data ingestion pipelines.
-* `baseline_3d_unet.py`: The 3D Convolutional baseline model.
-* `prithvi_mae.py`: The Prithvi foundation model (Vision Transformer) backbone.
-* `prithvi_cloud_imputation_model_bcast.py`: Decoder adaptations for the cloud-gap imputation task.
-* `cloud_imputation_dataloader_original.py`: Custom PyTorch dataloader featuring Just-In-Time (JIT) quality filtering and NaN sanitization.
+* **`extrinsic/`**:
+  * Contains downstream validation experiments for evaluating cloud-gap imputation quality under non-surrogate and leak-proof settings.
+  * Includes:
+    * Distributed GPU training scripts (`run_training_gpu_ddp.sh`)
+    * Inference and stratified evaluation pipelines (`evaluate_stratified_inference.py`)
+    * Visualization utilities (`panel_of_visualization.py`)
+    * Publication-ready table generation (`tables_paper_ready2.py`)
+    * Baseline and foundation-model implementations:
+      * `baseline_3d_unet_gn.py`
+      * `prithvi_mae.py`
+      * `prithvi_cloud_imputation_model_bcast.py`
+    * Unified dataloading and preprocessing:
+      * `unified_cloud_imputation_dataloader_syn.py`
+    * YAML-based experiment configuration:
+      * `config_train.yaml`
 
 ### 🚀 Installation & Environments
 
